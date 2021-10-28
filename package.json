@@ -1,7 +1,7 @@
 {
-  "name": "@aldinh777/revenge",
+  "name": "@aldinh777/pluck",
   "version": "0.0.1-dev",
-  "description": "Web Game Engine infused with Reactive Programming",
+  "description": "Html Game Engine infused with Reactive Programming",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "aldinh777",
   "license": "MIT",
   "dependencies": {
-    "@aldinh777/reactive": "^0.8.1-patch-unstable"
+    "@aldinh777/reactive": "^0.10.0-unstable"
   },
   "devDependencies": {
     "typescript": "^4.4.3"
