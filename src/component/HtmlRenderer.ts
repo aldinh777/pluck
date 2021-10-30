@@ -8,7 +8,6 @@ export default class HtmlRenderer extends Component {
         this.style = this.element.style;
         this.style.position = 'absolute';
     }
-
     setStyle(obj: any) {
         for (const key in obj) {
             const styleValue = obj[key];

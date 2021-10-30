@@ -1,14 +1,14 @@
 import reactive, { Reactive } from '@aldinh777/reactive';
 import GameScene from './GameScene';
 
-export default class SceneHandler {
+export default class SceneManager {
     protected __scenes: Map<string, GameScene> = new Map();
-    
     sceneName: Reactive<string> = reactive();
     activeGameScene: Reactive<GameScene | undefined> = reactive((sceneName) => this.__scenes.get(sceneName), this.sceneName);
 
     addScene(gameScene: GameScene) {
         this.__scenes.set(gameScene.name, gameScene);
+        gameScene.init(this);
     }
     bindToElement(elem: HTMLElement) {
         this.activeGameScene.onChange((scene, ev) => {

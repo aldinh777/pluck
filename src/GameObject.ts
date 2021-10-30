@@ -5,10 +5,8 @@ import SpriteRenderer from './component/SpriteRenderer';
 
 export default class GameObject {
     protected __components: Map<string, Component> = new Map();
-    name: string;
 
-    constructor(name: string) {
-        this.name = name;
+    constructor(public name: string) {
         this.addComponent("element", new HtmlRenderer());
         this.addComponent("transform", new Transform());
         this.addComponent("sprite", new SpriteRenderer());

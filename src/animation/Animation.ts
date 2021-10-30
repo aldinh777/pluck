@@ -9,12 +9,9 @@ export default class Animation {
     protected __frame: Reactive<Frame>;
     protected __nextTimeout!: ReturnType<typeof setTimeout>;
     protected __sprite!: Reactive<HTMLImageElement>;
-
-    frames: Frame[] = [];
     state: ReactiveState = reactive("stopped") as ReactiveState;
 
-    constructor(frames: Frame[]) {
-        this.frames = frames;
+    constructor(public frames: Frame[]) {
         this.__frame = reactive((index) => this.frames[index], this.__currentIndex);
         this.state.when(
             (state) => state === "playing",

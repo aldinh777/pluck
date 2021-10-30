@@ -6,16 +6,13 @@ export default class Frame {
     protected __scale: Reactive<string> = reactive((mirrored, flipped) => {
         return `scaleX(${mirrored ? -1 : 1}) scaleY(${flipped ? -1 : 1})`;
     }, this.__mirrored, this.__flipped);
-
     element: HTMLImageElement = document.createElement("img");
-    delay: number;
 
-    constructor(param: string, delay: number) {
-        this.element.src = param;
-        this.element.alt = param;
+    constructor(public src: string, public delay: number) {
+        this.element.src = src;
+        this.element.alt = src;
         this.element.style.width = "100%";
         this.element.style.height = "100%";
-        this.delay = delay;
         this.__scale.bindValue(this.element.style, "transform");
     }
     loadElement(): Node {

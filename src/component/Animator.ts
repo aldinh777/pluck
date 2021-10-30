@@ -5,7 +5,6 @@ import Animation from '../animation/Animation';
 
 export default class Animator extends Component {
     protected __animations: Map<string, Animation> = new Map();
-
     state: Reactive<string> = reactive();
 
     init(): void {
