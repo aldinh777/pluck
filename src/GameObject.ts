@@ -13,17 +13,19 @@ export default class GameObject {
     htmlElement: HtmlRenderer = new HtmlRenderer();
     transform: Transform = new Transform();
 
-    constructor(public name: string, initializer: GameObjectInitializer) {
-        if (initializer.size) {
-            const { width, height } = initializer.size;
-            this.transform.setSize(width, height);
-        }
-        if (initializer.pos) {
-            const { x, y } = initializer.pos;
-            this.transform.setPos(x, y);
-        }
-        if (initializer.style) {
-            this.htmlElement.setStyle(initializer.style);
+    constructor(public name: string, initializer?: GameObjectInitializer) {
+        if (initializer) {
+            if (initializer.size) {
+                const { width, height } = initializer.size;
+                this.transform.setSize(width, height);
+            }
+            if (initializer.pos) {
+                const { x, y } = initializer.pos;
+                this.transform.setPos(x, y);
+            }
+            if (initializer.style) {
+                this.htmlElement.setStyle(initializer.style);
+            }    
         }
     }
     addComponent(name: string, comp: Component): void {
