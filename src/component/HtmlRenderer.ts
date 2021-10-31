@@ -1,4 +1,4 @@
-import Component from "./Component";
+import Component from './Component';
 
 export default class HtmlRenderer extends Component {
     element: HTMLDivElement = document.createElement('div');

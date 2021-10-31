@@ -10,7 +10,7 @@
   "author": "aldinh777",
   "license": "MIT",
   "dependencies": {
-    "@aldinh777/reactive": "^0.10.0-unstable"
+    "@aldinh777/reactive": "^0.11.0-unstable"
   },
   "devDependencies": {
     "typescript": "^4.4.3"

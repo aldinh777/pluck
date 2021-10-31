@@ -1,6 +1,5 @@
-import reactive, { Reactive } from "@aldinh777/reactive";
-import Component from "./Component";
-import HtmlRenderer from "./HtmlRenderer";
+import reactive, { Reactive } from '@aldinh777/reactive';
+import Component from './Component';
 
 export default class Transform extends Component {
     x: Reactive<number> = reactive(0);
@@ -10,10 +9,18 @@ export default class Transform extends Component {
 
     init() {
         const toPixel = (r: any) => r.toString() + 'px';
-        const div = this.gameObject.getComponent<HtmlRenderer>("element");
+        const div = this.gameObject.htmlElement;
         this.x.bindValue(div.style, 'left', toPixel);
         this.y.bindValue(div.style, 'top', toPixel);
         this.width.bindValue(div.style, 'width', toPixel);
         this.height.bindValue(div.style, 'height', toPixel);
+    }
+    setPos(x: number, y: number) {
+        this.x.value = x;
+        this.y.value = y;
+    }
+    setSize(width: number, height: number) {
+        this.width.value = width;
+        this.height.value = height;
     }
 }

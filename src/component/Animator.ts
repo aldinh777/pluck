@@ -8,7 +8,11 @@ export default class Animator extends Component {
     state: Reactive<string> = reactive();
 
     init(): void {
-        const sr = this.gameObject.getComponent<SpriteRenderer>("sprite");
+        let sr = this.gameObject.getComponent<SpriteRenderer>('sprite');
+        if (!sr) {
+            sr = new SpriteRenderer();
+            this.gameObject.addComponent('sprite', sr);
+        }
         for (const anim of Array.from(this.__animations.values())) {
             anim.bindSprite(sr.sprite);
         }

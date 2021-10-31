@@ -3,24 +3,26 @@ import GameScene from './GameScene';
 
 export default class SceneManager {
     protected __scenes: Map<string, GameScene> = new Map();
-    sceneName: Reactive<string> = reactive();
-    activeGameScene: Reactive<GameScene | undefined> = reactive((sceneName) => this.__scenes.get(sceneName), this.sceneName);
+    scene: Reactive<string> = reactive();
+    gameScene: Reactive<GameScene | undefined> = reactive((sceneName) => this.__scenes.get(sceneName), this.scene);
 
-    addScene(gameScene: GameScene) {
-        this.__scenes.set(gameScene.name, gameScene);
-        gameScene.init(this);
+    addScene(...gameScenes: GameScene[]) {
+        gameScenes.forEach(gameScene => {
+            this.__scenes.set(gameScene.name, gameScene);
+            gameScene.init();    
+        });
     }
     bindToElement(elem: HTMLElement) {
-        this.activeGameScene.onChange((scene, ev) => {
+        this.gameScene.onChange((scene, ev) => {
             if (ev.oldValue) {
-                elem.removeChild(ev.oldValue.getElement());
+                elem.removeChild(ev.oldValue.getHtmlElement());
             }
             if (scene) {
-                elem.append(scene.getElement());
+                elem.append(scene.getHtmlElement());
             }
         }, true);
     }
     changeScene(name: string) {
-        this.sceneName.value = name;
+        this.scene.value = name;
     }
 }
