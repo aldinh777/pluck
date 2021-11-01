@@ -14,6 +14,8 @@ export default class GameObject {
     transform: Transform = new Transform();
 
     constructor(public name: string, initializer?: GameObjectInitializer) {
+        this.addComponent('element', this.htmlElement);
+        this.addComponent('transform', this.transform);
         if (initializer) {
             if (initializer.size) {
                 const { width, height } = initializer.size;
@@ -25,7 +27,7 @@ export default class GameObject {
             }
             if (initializer.style) {
                 this.htmlElement.setStyle(initializer.style);
-            }    
+            }
         }
     }
     addComponent(name: string, comp: Component): void {
