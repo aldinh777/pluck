@@ -1,4 +1,4 @@
-import reactive, { Reactive, Unsubscriber, increase } from '@aldinh777/reactive';
+import reactive, { Reactive, Unsubscriber } from '@aldinh777/reactive';
 import Frame from './Frame';
 
 type ReactiveState = Reactive<'playing' | 'stopped'>;
@@ -23,7 +23,8 @@ export default class Animation {
             );
             const unsubSpriteBind = this.__frame.onChange((frame) => {
                 this.__sprite.value = frame.element;
-                this.__nextTimeout = setTimeout(() => increase(this.__currentIndex), frame.delay);
+                this.__nextTimeout = setTimeout(() =>
+                    this.__currentIndex.value = this.__currentIndex.value + 1, frame.delay);
             }, true);
             this.__unsubscribers = [unsubIndex, unsubSpriteBind];
         });
